@@ -7,7 +7,7 @@ import java.util.List;
 public class Day01 extends Day {
 
     static {
-        currentDay = new Day01();
+        currentDay = buildCurrentDay(new Object() {});
     }
 
     @Override

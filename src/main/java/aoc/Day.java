@@ -1,6 +1,7 @@
 package aoc;
 
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Objects;
 
@@ -48,4 +49,12 @@ public abstract class Day {
         return Integer.parseInt(this.getClass().getSimpleName().replaceAll("[^0-9]", ""));
     }
 
+    protected static Day buildCurrentDay(Object o) {
+        try {
+            Class<? extends Day> childDayClass = o.getClass().getEnclosingClass().asSubclass(Day.class);
+            return childDayClass.getDeclaredConstructor().newInstance();
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new RuntimeException("Failed to determine current day. Make sure an object declared and initialised in the child day class is passed in, and that the child class has a noarg constructor available (such as the default one).", e);
+        }
+    }
 }
