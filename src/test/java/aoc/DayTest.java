@@ -42,7 +42,7 @@ class DayTest {
 
     private static class FakeDay01 extends Day {
         public FakeDay01() {
-            super(1);
+            super();
         }
 
         @Override

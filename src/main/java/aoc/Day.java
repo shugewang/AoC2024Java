@@ -9,18 +9,13 @@ import static java.util.stream.Collectors.toList;
 public abstract class Day {
 
     protected static Day currentDay;
-    private final int dayNumber;
-
-    protected Day(int dayNumber) {
-        this.dayNumber = dayNumber;
-    }
 
     public abstract String part1(List<String> input);
 
     public abstract String part2(List<String> input);
 
     private List<String> loadInput() {
-        String fileName = String.format("day%02d.txt", dayNumber);
+        String fileName = String.format("day%02d.txt", this.dayNumber());
 
         InputStream inputForDay = ClassLoader.getSystemResourceAsStream(fileName);
         if (Objects.isNull(inputForDay)) {
@@ -50,7 +45,7 @@ public abstract class Day {
     }
 
     public int dayNumber() {
-        return this.dayNumber;
+        return Integer.parseInt(this.getClass().getSimpleName().replaceAll("[^0-9]", ""));
     }
 
 }
