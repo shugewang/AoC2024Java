@@ -42,11 +42,11 @@ public abstract class Day {
     }
 
     void printPart2() {
-        System.out.println("Day " + this.dayNumber + ", Part 2: " + this.part2(this.loadInput()));
+        System.out.println("Day " + this.dayNumber() + ", Part 2: " + this.part2(this.loadInput()));
     }
 
     void printPart1() {
-        System.out.println("Day " + this.dayNumber + ", Part 1: " + this.part1(this.loadInput()));
+        System.out.println("Day " + this.dayNumber() + ", Part 1: " + this.part1(this.loadInput()));
     }
 
     public int dayNumber() {
